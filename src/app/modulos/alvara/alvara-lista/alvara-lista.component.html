@@ -58,8 +58,8 @@
                     <td>{{ alvara.numero_alvara }}</td>
                     <td>{{ alvara.nome_empresa }}</td>
                     <td>{{ alvara.cnpj_empresa }}</td>
-                    <td>{{ alvara.data_emissao }}</td>
-                    <td>{{ alvara.data_vencimento }}</td>
+                    <td>{{ alvara.data_emissao | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ alvara.data_vencimento | date:'dd/MM/yyyy' }}</td>
                     <td>{{ alvara.expira}}</td>
                     <td>
                         <button type="button" class="btn btn-primary" (click)="baixar(alvara)">

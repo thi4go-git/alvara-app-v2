@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlvaraService } from 'src/app/servicos/alvara.service';
 import { Alvara } from '../alvara';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DateFormatPipe } from 'src/app/pipes/date-format.pipe';
 
 
 
@@ -18,7 +19,6 @@ export class AlvaraFormComponent implements OnInit {
   alvara: Alvara;
   tipo_doc: any[] = [];
   listaErros: string[] = [];
-  dataTeste: Date | undefined;
 
 
   constructor(
@@ -104,7 +104,7 @@ export class AlvaraFormComponent implements OnInit {
   }
 
   voltarLista() {
-    this.router.navigate(['/alvara/lista'])
+    this.router.navigate(['/alvara/lista']);
   }
 
 }

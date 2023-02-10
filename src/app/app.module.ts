@@ -18,6 +18,7 @@ import { AlvaraService } from './servicos/alvara.service';
 import { AlvaraModule } from './modulos/alvara/alvara.module';
 import { TokenInterceptor } from './interceptador/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms'
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 
 
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms'
     AppComponent,
     LayoutComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
