@@ -29,12 +29,14 @@
                 </mat-toolbar>
             </p>
             <form>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="pdf" multiple id="arquivosPdf"
-                        (change)="selecionarArquivosPDF($event)" data-allowed-file-extensions='["pdf"]' />
-                    <label class="custom-file-label" for="custoFile" id="select">Clique para
-                        Selecionar...</label>
-                </div>
+                <input type="file" (change)="onFileSelected($event)" multiple data-allowed-file-extensions='["pdf"]'>
+                <br />
+                <br />
+                <br />
+
+
+
+
                 <button type="button" class="btn btn-primary" (click)="onUpload()" [disabled]="!listaArquivos">Upload
                 </button>
             </form>

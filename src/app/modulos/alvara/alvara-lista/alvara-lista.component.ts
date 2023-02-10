@@ -77,8 +77,7 @@ export class AlvaraListaComponent implements OnInit {
   }
 
 
-  listarPersonalizado(pagina = 0, tamanho = 10) {
-
+  listarPersonalizado() {
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro) {
         let consultaParam: String = 'totalVencidos';
@@ -104,94 +103,114 @@ export class AlvaraListaComponent implements OnInit {
 
   listarVencidos(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
+
+
     this.service.listarVencidos(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        this.qtdeRegistros = this.listaAlvaras.length;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          this.listaAlvaras = resposta.content;
+          this.totalElementos = resposta.totalElements;
+          this.pagina = resposta.number;
+          this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+          this.qtdeRegistros = this.listaAlvaras.length;
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Lista Vazia!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (responseError) => {
+          console.log(responseError);
+          this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, responseError => {
-        console.log(responseError);
-        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
-          duration: 2000
-        });
       });
   }
 
 
   listarVencerEmAte60Dias(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
+
+
     this.service.listarVencerEmAte60Dias(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        this.qtdeRegistros = this.listaAlvaras.length;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          this.listaAlvaras = resposta.content;
+          this.totalElementos = resposta.totalElements;
+          this.pagina = resposta.number;
+          this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+          this.qtdeRegistros = this.listaAlvaras.length;
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Lista Vazia!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, responseError => {
-        console.log(responseError);
-        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
-          duration: 2000
-        });
       });
+
   }
 
   listarDocumentosSemInfo(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
+
     this.service.listarDocumentosSemInfo(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        this.qtdeRegistros = this.listaAlvaras.length;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          this.listaAlvaras = resposta.content;
+          this.totalElementos = resposta.totalElements;
+          this.pagina = resposta.number;
+          this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+          this.qtdeRegistros = this.listaAlvaras.length;
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Lista Vazia!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, responseError => {
-        console.log(responseError);
-        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
-          duration: 2000
-        });
       });
+
   }
 
   listarVencerApos60Dias(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
+
     this.service.listarVencerApos60Dias(pagina, tamanho)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        this.qtdeRegistros = this.listaAlvaras.length;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          this.listaAlvaras = resposta.content;
+          this.totalElementos = resposta.totalElements;
+          this.pagina = resposta.number;
+          this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+          this.qtdeRegistros = this.listaAlvaras.length;
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Lista Vazia!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, responseError => {
-        console.log(responseError);
-        this.snackBar.open("Erro ao Obter Lista!", "ERRO!", {
-          duration: 2000
-        });
       });
 
   }
@@ -203,23 +222,27 @@ export class AlvaraListaComponent implements OnInit {
 
   baixar(alvara: Alvara) {
     this.mostraProgresso = true;
+
     this.service.obterArquivoPorId(alvara.id)
-      .subscribe(resposta => {
-        var sampleArr = this.base64ToArrayBuffer(resposta.pdf);
-        this.saveByteArray("ARQUIVO.pdf", sampleArr);
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Arquivo BAIXADO!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          var sampleArr = this.base64ToArrayBuffer(resposta.pdf);
+          this.saveByteArray("ARQUIVO.pdf", sampleArr);
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Arquivo BAIXADO!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open("Erro ao BAIXAR Arquivo!", "ERRO!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, errorResponse => {
-        console.log(errorResponse);
-        this.snackBar.open("Erro ao BAIXAR Arquivo!", "ERRO!", {
-          duration: 2000
-        });
-      }
-      );
+      });
+
   }
 
   base64ToArrayBuffer(base64: any) {
@@ -244,24 +267,29 @@ export class AlvaraListaComponent implements OnInit {
 
   consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
     this.mostraProgresso = true;
+
     this.service.listarTodosPorNome(pagina, tamanho, this.nome)
-      .subscribe(resposta => {
-        this.listaAlvaras = resposta.content;
-        this.totalElementos = resposta.totalElements;
-        this.pagina = resposta.number;
-        this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
-        this.qtdeRegistros = this.listaAlvaras.length;
-        if (this.listaAlvaras.length == 0) {
-          this.snackBar.open("Lista Vazia!", "Info!", {
+      .subscribe({
+        next: (resposta) => {
+          this.listaAlvaras = resposta.content;
+          this.totalElementos = resposta.totalElements;
+          this.pagina = resposta.number;
+          this.listaAlvaras.sort((a, b) => (a.expira < b.expira) ? -1 : 1);
+          this.qtdeRegistros = this.listaAlvaras.length;
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Lista Vazia!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          this.snackBar.open("Erro ao Listar por nome!", "Erro!", {
             duration: 2000
           });
         }
-        this.mostraProgresso = false;
-      }, responseError => {
-        this.snackBar.open("Erro ao Listar por nome!", "Erro!", {
-          duration: 2000
-        });
       });
+
     this.mostraProgresso = false;
   }
 

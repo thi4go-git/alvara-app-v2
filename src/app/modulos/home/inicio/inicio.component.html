@@ -10,9 +10,9 @@
 
     <div class="col-xl-3 col-md-6">
         <div class="card bg-danger text-white mb-4">
-            <div class="card-body"> 0 Vencidos</div>
+            <div class="card-body"> {{ totalVencidos }} Vencidos</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">View Details</a>
+                <a class="small text-white stretched-link" routerLink="/alvara/lista/totalVencidos">View Details</a>
                 <div class="small text-white"><svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
@@ -28,9 +28,9 @@
 
     <div class="col-xl-3 col-md-6">
         <div class="card bg-danger text-white mb-4">
-            <div class="card-body"> 10 Sem Data de Vencimento</div>
+            <div class="card-body"> {{ totaDocumentosSemInfo }} Sem Data de Vencimento</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">View
+                <a class="small text-white stretched-link" routerLink="/alvara/lista/totaDocumentosSemInfo">View
                     Details</a>
                 <div class="small text-white"><svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
@@ -46,9 +46,9 @@
 
     <div class="col-xl-3 col-md-6">
         <div class="card bg-warning text-white mb-4">
-            <div class="card-body">5 Vencem em até 60 dias</div>
+            <div class="card-body">{{ venceEm60dias }} Vencem em até 60 dias</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">View Details</a>
+                <a class="small text-white stretched-link" routerLink="/alvara/lista/venceEm60dias">View Details</a>
                 <div class="small text-white"><svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
@@ -63,9 +63,9 @@
 
     <div class="col-xl-3 col-md-6">
         <div class="card bg-primary text-white mb-4">
-            <div class="card-body">4 Vencem após 60 dias</div>
+            <div class="card-body">{{ venceApos60dias }} Vencem após 60 dias</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">View Details</a>
+                <a class="small text-white stretched-link" routerLink="/alvara/lista/venceApos60dias">View Details</a>
                 <div class="small text-white"><svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
@@ -85,7 +85,7 @@
         <div class="card bg-success text-white mb-4">
             <div class="card-body">Total de Documentos</div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">4</a>
+                <a class="small text-white stretched-link" routerLink="/alvara/lista">{{ totalDocumentos }}</a>
                 <div class="small text-white"><svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
@@ -131,3 +131,4 @@
         </div>
     </div>
 </div>
+

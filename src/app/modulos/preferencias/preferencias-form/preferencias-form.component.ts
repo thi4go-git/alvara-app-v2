@@ -22,14 +22,15 @@ export class PreferenciasFormComponent {
   percentProgress: number = 0;
   descProgresso: string = "";
 
-  selecionarArquivosPDF(event: any) {
+
+  onFileSelected(event: any) {
     this.listaArquivos = event.target.files;
-    const listaNomes = [];
     for (let cont = 0; cont < this.listaArquivos.length; cont++) {
-      listaNomes.push(this.listaArquivos[cont].name);
+      console.log(this.listaArquivos[cont].name);
     }
-    //  document.getElementById('select').innerHTML = listaNomes.length + " Arquivos Selecionados...";
+
   }
+
 
   onUpload() {
     if (this.listaArquivos) {
