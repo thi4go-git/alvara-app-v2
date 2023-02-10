@@ -28,7 +28,6 @@ export class PreferenciasFormComponent {
     for (let cont = 0; cont < this.listaArquivos.length; cont++) {
       console.log(this.listaArquivos[cont].name);
     }
-
   }
 
 
@@ -65,6 +64,7 @@ export class PreferenciasFormComponent {
             });
             this.contSucessUp = 0;
             this.percentProgress = 0;
+            location.reload();
           }
         },
         error: (errorResponse) => {

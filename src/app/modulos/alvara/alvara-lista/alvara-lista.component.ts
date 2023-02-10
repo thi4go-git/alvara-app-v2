@@ -17,7 +17,7 @@ export class AlvaraListaComponent implements OnInit {
   mostraProgresso: boolean = false;
   totalElementos = 0;
   pagina = 0;
-  tamanho = 0;
+  tamanho = 10;
   pageSizeOptions: number[] = [10];
   qtdeRegistros: number = 0;
   nome: string = "";
@@ -51,9 +51,9 @@ export class AlvaraListaComponent implements OnInit {
   }
 
 
-  listarArquivos(pagina = 0, tamanho = 10) {
+  listarArquivos() {
     this.mostraProgresso = true;
-    this.service.listarTodos(pagina, tamanho)
+    this.service.listarTodos(this.pagina, this.tamanho)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;
@@ -79,8 +79,8 @@ export class AlvaraListaComponent implements OnInit {
 
   listarPersonalizado() {
     this.activatedRoute.params.subscribe(parametro => {
-      if (parametro) {
-        let consultaParam: String = 'totalVencidos';
+      let consultaParam = parametro['tipoConsulta'];
+      if (parametro && consultaParam != undefined) {
         if (consultaParam == 'totalVencidos') {
           this.listarVencidos();
         } else {
@@ -101,11 +101,11 @@ export class AlvaraListaComponent implements OnInit {
   }
 
 
-  listarVencidos(pagina = 0, tamanho = 10) {
+  listarVencidos() {
     this.mostraProgresso = true;
 
 
-    this.service.listarVencidos(pagina, tamanho)
+    this.service.listarVencidos(this.pagina, this.tamanho)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;
@@ -130,11 +130,11 @@ export class AlvaraListaComponent implements OnInit {
   }
 
 
-  listarVencerEmAte60Dias(pagina = 0, tamanho = 10) {
+  listarVencerEmAte60Dias() {
     this.mostraProgresso = true;
 
 
-    this.service.listarVencerEmAte60Dias(pagina, tamanho)
+    this.service.listarVencerEmAte60Dias(this.pagina, this.tamanho)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;
@@ -159,10 +159,10 @@ export class AlvaraListaComponent implements OnInit {
 
   }
 
-  listarDocumentosSemInfo(pagina = 0, tamanho = 10) {
+  listarDocumentosSemInfo() {
     this.mostraProgresso = true;
 
-    this.service.listarDocumentosSemInfo(pagina, tamanho)
+    this.service.listarDocumentosSemInfo(this.pagina, this.tamanho)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;
@@ -187,10 +187,10 @@ export class AlvaraListaComponent implements OnInit {
 
   }
 
-  listarVencerApos60Dias(pagina = 0, tamanho = 10) {
+  listarVencerApos60Dias() {
     this.mostraProgresso = true;
 
-    this.service.listarVencerApos60Dias(pagina, tamanho)
+    this.service.listarVencerApos60Dias(this.pagina, this.tamanho)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;
@@ -217,7 +217,7 @@ export class AlvaraListaComponent implements OnInit {
 
   paginar(event: PageEvent) {
     this.pagina = event.pageIndex;
-    this.listarArquivos(this.pagina, this.tamanho);
+    this.listarArquivos();
   }
 
   baixar(alvara: Alvara) {
@@ -265,10 +265,10 @@ export class AlvaraListaComponent implements OnInit {
     link.click();
   }
 
-  consultarAlvaraPorNome(pagina = 0, tamanho = 10) {
+  consultarAlvaraPorNome() {
     this.mostraProgresso = true;
 
-    this.service.listarTodosPorNome(pagina, tamanho, this.nome)
+    this.service.listarTodosPorNome(this.pagina, this.tamanho, this.nome)
       .subscribe({
         next: (resposta) => {
           this.listaAlvaras = resposta.content;

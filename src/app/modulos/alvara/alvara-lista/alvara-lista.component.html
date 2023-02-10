@@ -75,5 +75,9 @@
             </tbody>
         </table>
 
+        <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="pageSizeOptions"
+            (page)="paginar($event)">
+        </mat-paginator>
+
     </div>
 </div>
