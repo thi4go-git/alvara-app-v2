@@ -53,5 +53,34 @@ export class AutenticacaoService {
   }
 
 
+  encerrarSessao() {
+    localStorage.removeItem('access_token');
+  }
+
+  getUsuarioAutenticado() {
+    const token = this.obterTokenStorage();
+    if (token) {
+      const usuario = this.jwtHelper.decodeToken(token).user_name
+      return usuario;
+    }
+  }
+
+  getAuthoritiesToken() {
+    const token = this.obterTokenStorage();
+    if (token) {
+      const authorities = this.jwtHelper.decodeToken(token).authorities;
+      return authorities;
+    }
+  }
+
+  isAdmin(authorities: string[]) {
+    for (let cont = 0; cont < authorities.length; cont++) {
+      let role = authorities[cont];
+      if (role == "ROLE_ADMIN" || role == "ADMIN") {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }

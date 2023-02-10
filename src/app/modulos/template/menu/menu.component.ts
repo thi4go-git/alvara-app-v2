@@ -1,10 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
+
+  usuarioLogado: string = "Deslogado";
+  authorities: string[] = [];
+  administrador: boolean = false;
+
+  constructor(
+    private authService: AutenticacaoService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.usuarioLogado = this.authService.getUsuarioAutenticado();
+    this.authorities = this.authService.getAuthoritiesToken();
+    this.administrador = this.authService.isAdmin(this.authorities);
+  }
+
+  logout() {
+    this.authService.encerrarSessao();
+    this.router.navigate(['/login']);
+  }
+
+  navegarInicio() {
+    this.router.navigate(['/home/inicio']);
+  }
+
+  navegarAlvaras() {
+    this.router.navigate(['/alvara/lista']);
+  }
 
 }

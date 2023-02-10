@@ -10,23 +10,27 @@
                 </a>
 
                 <div class="sb-sidenav-menu-heading">Version 1.0.0</div>
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/alvara/lista">
                     <mat-icon>description</mat-icon>
                     Alvarás
                 </a>
 
-                <a class="nav-link active" href="/preferencias/form">
+                <a class="nav-link active" href="/preferencias/form" *ngIf="administrador">
                     <mat-icon>lock</mat-icon>
                     Administrador
                 </a>
 
                 <div class="sb-sidenav-menu-heading">Logout</div>
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                <a class="nav-link collapsed" (click)="logout()" data-toggle="collapse" data-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-sign-out-alt"></i>
                     </div>
-                    Sair
+                    <div class="cursorMao">
+                        <mat-icon class="cursorMao">exit_to_app</mat-icon>
+                        Sair
+                    </div>
+
                 </a>
 
             </div>
@@ -37,7 +41,7 @@
                 <mat-icon>perm_identity</mat-icon>
                 Usuário logado:
             </div>
-            User
+            {{ usuarioLogado }} - {{ authorities }}
         </div>
     </nav>
 </div>

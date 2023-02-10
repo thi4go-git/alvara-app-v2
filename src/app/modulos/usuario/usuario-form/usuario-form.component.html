@@ -1,0 +1,48 @@
+<p>
+    <mat-toolbar>
+        <span>
+            <mat-icon>list</mat-icon>Cadastro de Usuários
+        </span>
+    </mat-toolbar>
+</p>
+
+<div id="row">
+    <div id="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            erro
+        </div>
+    </div>
+</div>
+
+<form>
+
+    <mat-form-field class="full-width">
+        <mat-label>Username:</mat-label>
+        <input formControlName="username" matInput placeholder="Digite o Username:" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Password:</mat-label>
+        <input formControlName="password" matInput placeholder="Digite o Password:" />
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+        <mat-label>nome:</mat-label>
+        <input formControlName="nome" matInput placeholder="Digite o nome:" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>cpf:</mat-label>
+        <input formControlName="cpf" matInput placeholder="Digite o cpf:" />
+    </mat-form-field>
+
+    <button type="submit" class="btn btn-success">
+        <i class="fa fa-save"></i>Salvar
+    </button>
+
+    <button type="button" class="btn btn-danger ml-2">
+        <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
+    </button>
+
+</form>

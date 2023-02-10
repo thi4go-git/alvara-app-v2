@@ -1,1 +1,43 @@
-preferencias work
+<mat-tab-group>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>supervisor_account</mat-icon>
+            Usuários
+        </ng-template>
+        <app-usuario-list></app-usuario-list>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>settings</mat-icon>
+            Preferências PDF
+        </ng-template>
+
+        <mat-card>
+
+            <div *ngIf="mostraProgresso">
+                <h3> {{ descProgresso }} </h3>
+                <mat-progress-bar mode="determinate" value="{{ percentProgress }}" class="progress"> </mat-progress-bar>
+            </div>
+
+            <p>
+                <mat-toolbar>
+                    <span>
+                        <mat-icon>settings</mat-icon>Processar Arquivos PDF / Upload
+                    </span>
+                </mat-toolbar>
+            </p>
+            <form>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="pdf" multiple id="arquivosPdf"
+                        (change)="selecionarArquivosPDF($event)" data-allowed-file-extensions='["pdf"]' />
+                    <label class="custom-file-label" for="custoFile" id="select">Clique para
+                        Selecionar...</label>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="onUpload()" [disabled]="!listaArquivos">Upload
+                </button>
+            </form>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>

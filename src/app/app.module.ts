@@ -9,10 +9,14 @@ import { LayoutComponent } from './componentes/layout/layout.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AutenticacaoService } from './servicos/autenticacao.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './modulos/home/home.module';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
 import { PreferenciasModule } from './modulos/preferencias/preferencias.module';
+import { UsuarioModule } from './modulos/usuario/usuario.module';
+import { AlvaraService } from './servicos/alvara.service';
+import { AlvaraModule } from './modulos/alvara/alvara.module';
+import { TokenInterceptor } from './interceptador/token.interceptor';
 
 
 
@@ -31,11 +35,20 @@ import { PreferenciasModule } from './modulos/preferencias/preferencias.module';
     HttpClientModule,
     TemplateModule,
     HomeModule,
-    PreferenciasModule
+    PreferenciasModule,
+    UsuarioModule,
+    AlvaraModule
 
   ],
   providers: [
-    AutenticacaoService
+    AutenticacaoService,
+    AlvaraService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+
   ],
   bootstrap: [AppComponent]
 })
