@@ -37,8 +37,8 @@ export class LoginComponent {
           console.log(response),
             this.loginError = false;
           this.erros = [];
-          const token = JSON.stringify(response);
-          localStorage.setItem('token', token);
+          const access_token = JSON.stringify(response);
+          localStorage.setItem('access_token', access_token);
           this.router.navigate(['/home/inicio'])
         },
         error: (errorResponse) => {

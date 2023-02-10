@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { JwtHelperService } from '@auth0/angular-jwt'
+
 
 const API_TOKEN = 'http://cloudtecnologia.dynns.com:8081/oauth/token';
 const CLI_ID = 'my-angular-app';
@@ -11,7 +13,11 @@ const CLI_SECRET = '@321';
 @Injectable({ providedIn: 'root' })
 export class AutenticacaoService {
 
-  constructor(private http: HttpClient) { }
+  jwtHelper: JwtHelperService;
+
+  constructor(private http: HttpClient) {
+    this.jwtHelper = new JwtHelperService();
+  }
 
 
   obterToken(username: string, password: string): Observable<any> {
@@ -28,6 +34,23 @@ export class AutenticacaoService {
     return this.http.post(API_TOKEN, params.toString(), { headers });
   }
 
+  isAuthenticated(): boolean {
+    const token = this.obterTokenStorage();
+    if (token) {
+      const expirado = this.jwtHelper.isTokenExpired(token);
+      return !expirado;
+    }
+    return false;
+  }
+
+  obterTokenStorage() {
+    const tokenStr = localStorage.getItem('access_token');
+    if (tokenStr) {
+      const token = JSON.parse(tokenStr).access_token;
+      return token;
+    }
+    return null;
+  }
 
 
 
