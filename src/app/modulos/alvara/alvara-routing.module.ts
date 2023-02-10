@@ -8,8 +8,7 @@ import { AlvaraListaComponent } from './alvara-lista/alvara-lista.component';
 
 const routes: Routes = [
   {
-    path: 'alvara', component: LayoutComponent, canActivate: [AutenticacaoGuard],
-    children: [
+    path: 'alvara', component: LayoutComponent, canActivate: [AutenticacaoGuard], children: [
       { path: 'lista', component: AlvaraListaComponent },
       { path: 'form', component: AlvaraFormComponent },
       { path: 'form/:id', component: AlvaraFormComponent },

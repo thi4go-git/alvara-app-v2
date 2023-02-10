@@ -3,5 +3,98 @@
     <li class="breadcrumb-item active">Edição</li>
 </ol>
 <div class="container">
-    formulario
+    <form #arquivoForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+        <div id="row">
+            <div id="col-md-12">
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of listaErros">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="row">
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b><label>ID:</label></b>
+                    <input type="text" class="form-control" disabled="true" [ngModel]="alvara.id" name="id" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b><label>Tipo Documento: </label></b>
+                        <select class="full-width" [ngModelOptions]="{standalone: true}" [(ngModel)]="alvara.tipo_doc"
+                            class="cursorMao">
+                            <option *ngFor="let tipo of tipo_doc" [ngValue]="tipo">
+                                <h2> <b>{{ tipo}}</b></h2>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Nome Arquivo: </label></b>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_arquivo" name="nome_arquivo" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Nº Alvará:</label></b>
+
+                    <input type="text" class="form-control" [(ngModel)]="alvara.numero_alvara" name="numero_alvara"
+                        autoGrow />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Empresa: </label></b>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_empresa" name="nome_empresa" />
+                </div>
+            </div>
+
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>CNPJ: </label></b>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.cnpj_empresa" name="cnpj_empresa" />
+                </div>
+            </div>
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Emissão: </label></b>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_emissao" name="dataEmissao" />
+                </div>
+            </div>
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Vencimento: </label></b>
+                    <input type="text" class="form-control" [(ngModel)]="alvara.data_vencimento"
+                        name="dataVencimento" />
+                </div>
+            </div>
+            <div id="col-md-6">
+                <div id="form-group">
+                    <b> <label>Expira:</label></b>
+                    <input type="text" class="form-control" [ngModel]="alvara.expira" name="expira" disabled="true" />
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
+            <i class="fa fa-sync-alt"></i>Atualizar
+        </button>
+        <button type="button" class="btn btn-danger ml-2" (click)="voltarLista()">
+            <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
+        </button>
+    </form>
 </div>

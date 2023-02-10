@@ -39,9 +39,19 @@ export class AlvaraFormComponent implements OnInit {
   listarPorId() {
 
     this.activatedRoute.params.subscribe(parametro => {
-      if (parametro) {
+      if (parametro && parametro['id'] != undefined) {
 
-        console.log(parametro.toString);
+        this.id = parametro['id'];
+
+        this.service
+          .obterArquivoPorId(this.id).subscribe({
+            next: (resposta) => {
+              this.alvara = resposta;
+            },
+            error: (errorResponse) => {
+              console.log(errorResponse);
+            }
+          });
 
       }
     });

@@ -58,7 +58,6 @@ export class PreferenciasFormComponent {
             " - " + (this.percentProgress).toFixed(2) + "%";
           if (this.contSucessUp == this.listaArquivos.length) {
             this.mostraProgresso = false;
-            //  document.getElementById('select').innerHTML = "Concluído!";
             this.listaArquivos = [];
             this.snackBar.open("Processo Concluído! (" + this.contSucessUp + ") Arquivos processados com Sucesso!", "Sucesso!", {
               duration: 4000
