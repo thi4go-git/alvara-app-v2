@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './modulos/home/home.module';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
+import { PreferenciasModule } from './modulos/preferencias/preferencias.module';
 
 
 
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './componentes/not-found/not-found.component';
     FormsModule,
     HttpClientModule,
     TemplateModule,
-    HomeModule
+    HomeModule,
+    PreferenciasModule
 
   ],
   providers: [
