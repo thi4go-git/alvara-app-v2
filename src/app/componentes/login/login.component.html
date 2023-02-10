@@ -12,20 +12,20 @@
                                     </h1>
                                 </div>
                                 <div class="card-body">
-                                    <div class="alert alert-danger" role="alert">
-                                        erro aq
+                                    <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
+                                        {{ erro }}
                                     </div>
-                                    <form>
+                                    <form #loginForm="ngForm" (submit)="onSubmit()">
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="inputUsername" type="username"
-                                                placeholder="name@example.com" />
+                                                placeholder="name@example.com" name="username" [(ngModel)]="username" />
                                             <label for="inputEmail">
                                                 Informe o Login:
                                             </label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="inputPassword" type="password"
-                                                placeholder="Password" />
+                                                placeholder="Password" name="password" [(ngModel)]="password" />
                                             <label for="inputPassword">
                                                 Informe a Senha:
                                             </label>

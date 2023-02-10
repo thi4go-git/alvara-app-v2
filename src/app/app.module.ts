@@ -7,6 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TemplateModule } from './modulos/template/template.module';
 import { LayoutComponent } from './componentes/layout/layout.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { AutenticacaoService } from './servicos/autenticacao.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './modulos/home/home.module';
+import { NotFoundComponent } from './componentes/not-found/not-found.component';
 
 
 
@@ -14,15 +19,22 @@ import { LoginComponent } from './componentes/login/login.component';
   declarations: [
     AppComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TemplateModule
+    FormsModule,
+    HttpClientModule,
+    TemplateModule,
+    HomeModule
+
   ],
-  providers: [],
+  providers: [
+    AutenticacaoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
