@@ -8,13 +8,13 @@
 
 <div id="row">
     <div id="col-md-12">
-        <div class="alert alert-danger" role="alert">
-            erro
+        <div class="alert alert-danger" role="alert" *ngFor="let erro of listaErros">
+            {{ erro }}
         </div>
     </div>
 </div>
 
-<form>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <mat-form-field class="full-width">
         <mat-label>Username:</mat-label>
@@ -37,11 +37,11 @@
         <input formControlName="cpf" matInput placeholder="Digite o cpf:" />
     </mat-form-field>
 
-    <button type="submit" class="btn btn-success">
+    <button type="submit" class="btn btn-success" [disabled]="!formulario.valid">
         <i class="fa fa-save"></i>Salvar
     </button>
 
-    <button type="button" class="btn btn-danger ml-2">
+    <button type="button" class="btn btn-danger ml-2" (click)="voltarPreferencias()">
         <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
     </button>
 

@@ -17,6 +17,7 @@ import { UsuarioModule } from './modulos/usuario/usuario.module';
 import { AlvaraService } from './servicos/alvara.service';
 import { AlvaraModule } from './modulos/alvara/alvara.module';
 import { TokenInterceptor } from './interceptador/token.interceptor';
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 
@@ -37,7 +38,8 @@ import { TokenInterceptor } from './interceptador/token.interceptor';
     HomeModule,
     PreferenciasModule,
     UsuarioModule,
-    AlvaraModule
+    AlvaraModule,
+    ReactiveFormsModule
 
   ],
   providers: [

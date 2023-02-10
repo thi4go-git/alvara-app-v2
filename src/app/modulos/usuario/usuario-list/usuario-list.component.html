@@ -5,7 +5,7 @@
 <div class="container">
     <div id="row">
         <div id="col-md-2">
-            <button class="btn btn-warning">
+            <button class="btn btn-warning" (click)="novoUsuario()">
                 <i class="fa fa-plus"></i>Novo
             </button>
         </div>
@@ -31,41 +31,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let usuario of listaUsuarios">
                         <td>
-                            <div>
-                                <img width="50" height="50" />
+                            <div *ngIf="usuario.foto">
+                                <img width="50" height="50" src="data:image/jpeg;base64,{{ usuario.foto }}" />
                             </div>
-                            <div>
-                                <input type="file" name="foto" />
+                            <div *ngIf=" !usuario.foto">
+                                <input type="file" name="foto" (change)="uploadFoto($event,usuario)" />
                             </div>
                         </td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.password }}</td>
+                        <td>{{ usuario.role }}</td>
+                        <td>{{ usuario.nome }}</td>
+                        <td>{{ usuario.cpf }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.celular }}</td>
                         <td>
-                            <mat-icon class="cursorMao">
-
+                            <mat-icon (click)="ativarDesativar(usuario)" class="cursorMao">
+                                {{ usuario.ativo ? 'thumb_up' : 'thumb_down' }}
                             </mat-icon>
                         </td>
                         <td>
-                            <mat-icon class="cursorMao">
-
+                            <mat-icon (click)="ativarDesativarAdm(usuario)" class="cursorMao">
+                                {{ usuario.admin ? 'thumb_up' : 'thumb_down' }}
                             </mat-icon>
                         </td>
                         <td>
                             <mat-icon class="cursorMao">edit</mat-icon>
                         </td>
                         <td>
-                            <mat-icon class="cursorMao">delete</mat-icon>
+                            <mat-icon (click)="deletarUsuario(usuario)" class="cursorMao">delete</mat-icon>
                         </td>
                         <td>
-                            <mat-icon class="cursorMao">visibility</mat-icon>
+                            <mat-icon (click)="infoUsuario(usuario)" class="cursorMao">visibility</mat-icon>
                         </td>
                     </tr>
                 </tbody>

@@ -8,34 +8,35 @@
         </mat-card-title>
     </mat-card-header>
 
-    <img mat-card-image class="foto" />
+    <img mat-card-image class="foto" src="data:image/jpeg;base64,{{ usuario.foto }}" />
 
     <mat-card-content>
         <p>
             ID:
-            <strong>1</strong><br />
+            <strong>{{ usuario.id }}</strong><br />
             username:
-            <strong>1</strong><br />
+            <strong>{{ usuario.username }}</strong><br />
             password:
-            <strong>1</strong><br />
+            <strong>{{ usuario.password }}</strong><br />
             role:
-            <strong>1</strong><br />
+            <strong>{{ usuario.role }}</strong><br />
             ativo:
-            <strong>1</strong><br />
+            <strong>{{ usuario.ativo }}</strong><br />
             nome:
-            <strong>1</strong><br />
+            <strong>{{ usuario.nome }}</strong><br />
             cpf:
-            <strong>1</strong><br />
+            <strong>{{ usuario.cpf }}</strong><br />
             email:
-            <strong>1</strong><br />
+            <strong>{{ usuario.email }}</strong><br />
             celular:
-            <strong>1</strong><br />
+            <strong>{{ usuario.celular }}</strong><br />
         </p>
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" (click)="fecharDialog()">
             Fechar Info
         </button>
     </mat-card-actions>
+
 </mat-card>
