@@ -17,6 +17,7 @@ export class UsuarioFormComponent {
   usuarioDto: UsuarioDTO;
   formulario: FormGroup;
   listaErros: string[];
+  hide = true;
 
   constructor(
     private formBuild: FormBuilder,

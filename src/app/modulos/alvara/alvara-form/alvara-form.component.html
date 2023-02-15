@@ -17,85 +17,77 @@
 
         <div id="row">
 
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b><label>ID:</label></b>
-                    <input type="text" class="form-control" disabled="true" [ngModel]="alvara.id" name="id" />
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <b><label>Tipo Documento: </label></b>
-                        <select class="full-width" [ngModelOptions]="{standalone: true}" [(ngModel)]="alvara.tipo_doc"
-                            class="cursorMao">
-                            <option *ngFor="let tipo of tipo_doc" [ngValue]="tipo">
-                                <h2> <b>{{ tipo}}</b></h2>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Nome Arquivo: </label></b>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_arquivo" name="nome_arquivo" />
-                </div>
-            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>fingerprint</mat-icon>
+                <mat-label> <b>ID:</b> </mat-label>
+                <input matInput placeholder="Informe o ID:" name="id" [(ngModel)]="alvara.id" disabled="true" />
+            </mat-form-field>
 
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Nº Alvará:</label></b>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label> <b>Tipo Arquivo:</b> </mat-label>
+                <select matNativeControl matInput>
+                    <option *ngFor="let tipo of tipo_doc" [value]="tipo" [selected]="tipo">
+                        {{ tipo }}
+                    </option>
+                </select>
+            </mat-form-field>
 
-                    <input type="text" class="form-control" [(ngModel)]="alvara.numero_alvara" name="numero_alvara"
-                        autoGrow />
-                </div>
-            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>picture_as_pdf</mat-icon>
+                <mat-label> <b>Nome Arquivo:</b> </mat-label>
+                <input matInput placeholder="Informe o Nome Arquivo:" name="nome_arquivo"
+                    [(ngModel)]="alvara.nome_arquivo" />
+            </mat-form-field>
 
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Empresa: </label></b>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.nome_empresa" name="nome_empresa" />
-                </div>
-            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>confirmation_number</mat-icon>
+                <mat-label> <b>Nº Alvará:</b> </mat-label>
+                <input matInput placeholder="Informe o Nº Alvará:" name="numero_alvara"
+                    [(ngModel)]="alvara.numero_alvara" />
+            </mat-form-field>
 
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>CNPJ: </label></b>
-                    <input type="text" class="form-control" [(ngModel)]="alvara.cnpj_empresa" name="cnpj_empresa" />
-                </div>
-            </div>
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Emissão: </label></b>
-                    <input type="date" class="form-control" [(ngModel)]="alvara.data_emissao" name="dataEmissao" />
-                </div>
-            </div>
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Vencimento: </label></b>
-                    <input type="date" class="form-control" [(ngModel)]="alvara.data_vencimento"
-                        name="dataVencimento" />
-                </div>
-            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>text_format</mat-icon>
+                <mat-label> <b>Nome Empresa:</b> </mat-label>
+                <input matInput placeholder="Informe a Empresa" name="nome_empresa" [(ngModel)]="alvara.nome_empresa" />
+            </mat-form-field>
 
-            <div id="col-md-6">
-                <div id="form-group">
-                    <b> <label>Expira:</label></b>
-                    <input type="text" class="form-control" [ngModel]="alvara.expira" name="expira" disabled="true" />
-                </div>
-            </div>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>assignment_ind</mat-icon>
+                <mat-label> <b>CNPJ Empresa:</b> </mat-label>
+                <input matInput placeholder="Informe a CNPJ" name="cnpj_empresa" [(ngModel)]="alvara.cnpj_empresa" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label> <b>Data Emissão:</b> </mat-label>
+                <input matInput placeholder="Informe a Data Emissão" type="date" name="data_emissao"
+                    [(ngModel)]="alvara.data_emissao" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label> <b>Data Vencimento:</b> </mat-label>
+                <input matInput placeholder="Informe a Data Vencimento" type="date" name="data_vencimento"
+                    [(ngModel)]="alvara.data_vencimento" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-icon matSuffix>explicit</mat-icon>
+                <mat-label> <b>Expira:</b> </mat-label>
+                <input matInput placeholder="Informe o Expira:" name="expira" [(ngModel)]="alvara.expira"
+                    disabled="true" />
+            </mat-form-field>
 
         </div>
 
         <br />
 
         <button type="submit" class="btn btn-primary" *ngIf="alvara.id">
-            <i class="fa fa-sync-alt"></i>Atualizar
+            <i class="fa fa-sync-alt"></i>
+            <mat-icon>autorenew</mat-icon>Atualizar
         </button>
         <button type="button" class="btn btn-danger ml-2" (click)="voltarLista()">
-            <i class="fa fa-solid fa-arrow-alt-circle-left"></i>Voltar
+            <i class="fa fa-solid fa-arrow-alt-circle-left"></i>
+            <mat-icon>keyboard_return</mat-icon>Voltar
         </button>
     </form>
 </div>
