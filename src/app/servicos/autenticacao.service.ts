@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt'
 
 
-const API_TOKEN = 'http://cloudtecnologia.dynns.com:8081/oauth/token';
+// const API_TOKEN = 'http://cloudtecnologia.dynns.com:8081/oauth/token';
+const API_TOKEN = 'http://192.168.1.254:8081/oauth/token';
 const CLI_ID = 'my-angular-app';
 const CLI_SECRET = '@321';
 

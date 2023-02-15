@@ -6,8 +6,9 @@ import { AlvaraPaginator } from '../modulos/alvara/alvaraPaginator';
 
 
 // const API_URL = 'http://cloudtecnologia.dynns.com:8081/api/alvara';
+// http://192.168.1.254:8081
 
-const API_URL = 'http://localhost:8080/api/alvara';
+const API_URL = 'http://192.168.1.254:8081/api/alvara';
 
 @Injectable({ providedIn: 'root' })
 export class AlvaraService {

@@ -15,21 +15,25 @@
                                     <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
                                         {{ erro }}
                                     </div>
-                                    <form #loginForm="ngForm" (submit)="onSubmit()">
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputUsername" type="username"
-                                                placeholder="name@example.com" name="username" [(ngModel)]="username" />
-                                            <label for="inputEmail">
-                                                Informe o Login:
-                                            </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password"
-                                                placeholder="Password" name="password" [(ngModel)]="password" />
-                                            <label for="inputPassword">
-                                                Informe a Senha:
-                                            </label>
-                                        </div>
+                                    <form #loginForm="ngForm">
+
+                                        <mat-form-field class="full-width" appearance="fill">
+                                            <mat-icon matSuffix>fingerprint</mat-icon>
+                                            <mat-label>username:</mat-label>
+                                            <input matInput placeholder="Informe o Login:" name="username"
+                                                [(ngModel)]="username" />
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill" class="full-width">
+                                            <mat-label> Informe a Senha:</mat-label>
+                                            <input matInput [type]="hide ? 'password' : 'text'" name="password"
+                                                [(ngModel)]="password">
+                                            <button mat-icon-button matSuffix (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" id="inputRememberPassword" type="checkbox"
                                                 value="" />
@@ -37,11 +41,14 @@
                                                 Remember Password
                                             </label>
                                         </div>
+
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="button" class="btn btn-primary" (click)="onSubmit()">
                                                 Enviar
                                             </button>
                                         </div>
+
+
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">

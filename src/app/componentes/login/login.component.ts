@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 
@@ -13,10 +14,12 @@ export class LoginComponent {
   password: string;
   erros: string[];
   loginError: boolean;
+  hide = true;
 
   constructor(
     private router: Router,
-    private authService: AutenticacaoService
+    private authService: AutenticacaoService,
+    private snackBar: MatSnackBar
   ) {
     this.username = '';
     this.password = '';
@@ -26,7 +29,13 @@ export class LoginComponent {
 
 
   onSubmit() {
-    this.logar();
+    if (this.username && this.password) {
+      this.logar();
+    } else {
+      this.snackBar.open("Favor informar username e Senha!", "Info!", {
+        duration: 2000
+      });
+    }
   }
 
   logar() {
@@ -34,8 +43,7 @@ export class LoginComponent {
       .obterToken(this.username, this.password)
       .subscribe({
         next: (response) => {
-          console.log(response),
-            this.loginError = false;
+          this.loginError = false;
           this.erros = [];
           const access_token = JSON.stringify(response);
           localStorage.setItem('access_token', access_token);

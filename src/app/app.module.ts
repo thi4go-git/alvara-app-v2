@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,9 @@ import { AlvaraModule } from './modulos/alvara/alvara.module';
 import { TokenInterceptor } from './interceptador/token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms'
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -34,14 +38,19 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
+    MatFormFieldModule,
     HttpClientModule,
     TemplateModule,
     HomeModule,
     PreferenciasModule,
     UsuarioModule,
     AlvaraModule,
-    ReactiveFormsModule
+    MatIconModule,
+    CommonModule,
+    MatInputModule
+
 
   ],
   providers: [

@@ -5,9 +5,9 @@ import { Usuario } from '../modulos/usuario/usuario';
 import { UsuarioDTO } from '../modulos/usuario/usuarioDTO';
 import { UsuarioPaginator } from '../modulos/usuario/usuarioPaginator';
 
-
-const API_URL = 'http://cloudtecnologia.dynns.com:8081/api/usuarios';
-
+// const API_TOKEN = 'http://192.168.1.254:8081
+//const API_URL = 'http://cloudtecnologia.dynns.com:8081/api/usuarios';
+const API_URL = 'http://192.168.1.254:8081/api/usuarios';
 
 @Injectable({ providedIn: 'root' })
 export class UsuarioService {
