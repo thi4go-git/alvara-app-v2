@@ -19,11 +19,14 @@
 </mat-form-field>
 
 <div class="card-header">
-    Lista de Documentos - Total Registros: {{ qtdeRegistros }}
+    Lista de Documentos
 </div>
 
 
 <div class="mat-elevation-z8 col-md-12 table-responsive">
+    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="[10,50,100,500]"
+        aria-label="Select page" (page)="paginar($event)">
+    </mat-paginator>
     <table mat-table [dataSource]="dataSource"
         class="col-md-12 table-responsive mat-elevation-z8 table table-condensed table-hover table-striped">
 
@@ -114,10 +117,5 @@
         </tr>
 
     </table>
-
-    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="[10,50,100,500]"
-        aria-label="Select page" (page)="paginar($event)">
-    </mat-paginator>
-
 
 </div>
