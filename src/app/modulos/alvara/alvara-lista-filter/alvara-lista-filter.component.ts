@@ -73,6 +73,7 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
 
   paginar(event: PageEvent) {
     this.pagina = event.pageIndex;
+    this.tamanho = event.pageSize
     this.listarArquivos();
   }
 
