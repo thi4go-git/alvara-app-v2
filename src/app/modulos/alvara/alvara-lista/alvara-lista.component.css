@@ -5,3 +5,9 @@
 .progress {
     height: 35px;
 }
+
+
+.cursorMao {
+    cursor: pointer;
+    color: blue;
+}

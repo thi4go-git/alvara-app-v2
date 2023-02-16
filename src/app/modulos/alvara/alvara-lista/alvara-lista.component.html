@@ -62,9 +62,7 @@
                     <td>{{ alvara.data_vencimento | date:'dd/MM/yyyy' }}</td>
                     <td>{{ alvara.expira}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" (click)="baixar(alvara)">
-                            <mat-icon>get_app</mat-icon>
-                        </button>
+                        <mat-icon class="cursorMao" (click)="baixar(alvara)" >get_app</mat-icon>
                     </td>
                     <td>
                         <a routerLink="/alvara/form/{{ alvara.id }}">

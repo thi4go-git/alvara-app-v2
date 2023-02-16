@@ -15,7 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AlvaraListaFilterComponent } from './alvara-lista-filter/alvara-lista-filter.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -36,7 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatCardModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
 
   ], exports: [
     AlvaraFormComponent,

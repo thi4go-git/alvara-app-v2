@@ -11,3 +11,8 @@ td,
 th {
     width: 25%;
 }
+
+.cursorMao {
+    cursor: pointer;
+    color: blue;
+}
