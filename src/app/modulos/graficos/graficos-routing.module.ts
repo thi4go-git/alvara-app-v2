@@ -3,14 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/componentes/layout/layout.component';
 import { NotFoundComponent } from 'src/app/componentes/not-found/not-found.component';
 import { AutenticacaoGuard } from 'src/app/guardiao/autenticacao.guard';
-import { PreferenciasFormComponent } from './preferencias-form/preferencias-form.component';
+import { ExemploGraficoComponent } from './exemplo-grafico/exemplo-grafico.component';
 
 const routes: Routes = [
   {
-    path: 'preferencias', component: LayoutComponent,
-    canActivate: [AutenticacaoGuard], children: [
-      { path: 'form', component: PreferenciasFormComponent, title: 'Preferências' },
-      { path: '', redirectTo: '/preferencias/form', pathMatch: 'full' },
+    path: 'graficos', component: LayoutComponent, canActivate: [AutenticacaoGuard], children: [
+      { path: 'exemplo', component: ExemploGraficoComponent },
+      { path: '', redirectTo: '/grafico/exemplo', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent }
     ]
   }
@@ -20,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PreferenciasRoutingModule { }
+export class GraficosRoutingModule { }

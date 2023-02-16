@@ -23,6 +23,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { GraficosModule } from './modulos/graficos/graficos.module';
 
 
 
@@ -47,6 +48,7 @@ import { MatInputModule } from '@angular/material/input';
     PreferenciasModule,
     UsuarioModule,
     AlvaraModule,
+    GraficosModule,
     MatIconModule,
     CommonModule,
     MatInputModule

@@ -9,8 +9,8 @@ import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 const routes: Routes = [
   {
     path: 'usuario', component: LayoutComponent, canActivate: [AutenticacaoGuard], children: [
-      { path: 'lista', component: UsuarioListComponent },
-      { path: 'form', component: UsuarioFormComponent },
+      { path: 'lista', component: UsuarioListComponent, title: 'Listagem Usuários' },
+      { path: 'form', component: UsuarioFormComponent, title: 'Formulário de Usuários' },
       { path: '', redirectTo: '/usuario/lista', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent }
     ]

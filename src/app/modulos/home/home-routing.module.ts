@@ -8,7 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 const routes: Routes = [
   {
     path: 'home', component: LayoutComponent, canActivate: [AutenticacaoGuard], children: [
-      { path: 'inicio', component: InicioComponent },
+      { path: 'inicio', component: InicioComponent, title: 'Inicio' },
       { path: '', redirectTo: '/home/inicio', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent }
     ]

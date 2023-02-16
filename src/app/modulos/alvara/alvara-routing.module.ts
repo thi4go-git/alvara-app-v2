@@ -10,11 +10,11 @@ import { AlvaraListaComponent } from './alvara-lista/alvara-lista.component';
 const routes: Routes = [
   {
     path: 'alvara', component: LayoutComponent, canActivate: [AutenticacaoGuard], children: [
-      { path: 'lista', component: AlvaraListaComponent },
-      { path: 'lista/filter', component: AlvaraListaFilterComponent },
-      { path: 'form', component: AlvaraFormComponent },
-      { path: 'form/:id', component: AlvaraFormComponent },
-      { path: 'lista/:tipoConsulta', component: AlvaraListaComponent },
+      { path: 'lista', component: AlvaraListaComponent, title: 'Lista ALvaras' },
+      { path: 'lista/filter', component: AlvaraListaFilterComponent, title: 'Lista Alvaras Filter' },
+      { path: 'form', component: AlvaraFormComponent, title: 'Cadastro Alvará' },
+      { path: 'form/:id', component: AlvaraFormComponent, title: 'Edição Alvará' },
+      { path: 'lista/:tipoConsulta', component: AlvaraListaComponent, title: 'Lista Alvarás Perso' },
       { path: '', redirectTo: '/alvara/lista', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent }
     ]
