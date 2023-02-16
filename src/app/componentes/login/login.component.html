@@ -15,7 +15,7 @@
                                     <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
                                         {{ erro }}
                                     </div>
-                                    <form #loginForm="ngForm">
+                                    <form #loginForm="ngForm" (submit)="onSubmit()">
 
                                         <mat-form-field class="full-width" appearance="fill">
                                             <mat-icon matSuffix>fingerprint</mat-icon>
@@ -29,8 +29,9 @@
                                             <input matInput [type]="hide ? 'password' : 'text'" name="password"
                                                 [(ngModel)]="password">
                                             <button mat-icon-button matSuffix (click)="hide = !hide"
-                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                                <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                                                type="button">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </button>
                                         </mat-form-field>
 
@@ -43,7 +44,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="button" class="btn btn-primary" (click)="onSubmit()">
+                                            <button type="submit" class="btn btn-primary">
                                                 Enviar
                                             </button>
                                         </div>
