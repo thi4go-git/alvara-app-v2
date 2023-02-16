@@ -18,28 +18,14 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Nome empresa" #input>
 </mat-form-field>
 
+<div class="card-header">
+    Lista de Documentos - Total Registros: {{ qtdeRegistros }}
+</div>
+
+
 <div class="mat-elevation-z8 col-md-12 table-responsive">
     <table mat-table [dataSource]="dataSource"
         class="col-md-12 table-responsive mat-elevation-z8 table table-condensed table-hover table-striped">
-
-
-
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-            <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
-                </mat-checkbox>
-            </th>
-            <td mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
-                </mat-checkbox>
-            </td>
-        </ng-container>
-
-
 
         <!-- Position Column -->
         <ng-container matColumnDef="id">
@@ -129,7 +115,7 @@
 
     </table>
 
-    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="[10,50,100]"
+    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="[10,50,100,500]"
         aria-label="Select page" (page)="paginar($event)">
     </mat-paginator>
 

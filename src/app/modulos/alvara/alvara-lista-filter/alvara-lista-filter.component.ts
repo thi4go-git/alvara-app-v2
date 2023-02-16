@@ -29,6 +29,7 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
   pagina = 0;
   tamanho = 10;
   pageSizeOptions: number[] = [this.tamanho];
+  qtdeRegistros: number = 0;
 
   //
   selection = new SelectionModel<Alvara>(true, []);
@@ -63,6 +64,7 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
           this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
           this.totalElementos = resposta.totalElements;
           this.pagina = resposta.number;
+          this.qtdeRegistros = this.listaAlvaras.length;
         },
         error: (errorResponse) => {
           console.log(errorResponse);
