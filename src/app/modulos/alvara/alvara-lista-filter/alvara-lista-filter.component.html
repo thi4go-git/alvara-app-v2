@@ -6,11 +6,13 @@
     </mat-toolbar>
 </p>
 
+
 <div *ngIf="mostraProgresso">
     Aguarde Processando arquivos...
     <mat-progress-bar mode="indeterminate" class="progress">
     </mat-progress-bar>
 </div>
+
 
 <mat-form-field> <mat-label>Filto Geral:</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Nome empresa" #input>
@@ -127,8 +129,9 @@
 
     </table>
 
-    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="pageSizeOptions"
-        (page)="paginar($event)">
+    <mat-paginator [length]="totalElementos" [pageSize]="tamanho" [pageSizeOptions]="[10,50,100]"
+        aria-label="Select page" (page)="paginar($event)">
     </mat-paginator>
+
 
 </div>

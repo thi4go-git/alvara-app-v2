@@ -28,7 +28,7 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
   totalElementos = 0;
   pagina = 0;
   tamanho = 10;
-  pageSizeOptions: number[] = [10];
+  pageSizeOptions: number[] = [this.tamanho];
 
   //
   selection = new SelectionModel<Alvara>(true, []);
