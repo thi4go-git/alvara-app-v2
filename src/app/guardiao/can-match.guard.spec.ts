@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AutenticacaoGuard } from './autenticacao.guard';
+import { CanMatchGuard } from './can-match.guard';
 
-describe('AutenticacaoGuard', () => {
-  let guard: AutenticacaoGuard;
+describe('CanMatchGuard', () => {
+  let guard: CanMatchGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(AutenticacaoGuard);
+    guard = TestBed.inject(CanMatchGuard);
   });
 
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
-
 });
