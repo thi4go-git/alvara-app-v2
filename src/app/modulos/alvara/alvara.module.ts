@@ -12,13 +12,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AlvaraListaFilterComponent } from './alvara-lista-filter/alvara-lista-filter.component';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 
 @NgModule({
   declarations: [
     AlvaraFormComponent,
-    AlvaraListaComponent
+    AlvaraListaComponent,
+    AlvaraListaFilterComponent
   ],
   imports: [
     CommonModule,
@@ -30,11 +35,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatPaginatorModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule
 
   ], exports: [
     AlvaraFormComponent,
-    AlvaraListaComponent
+    AlvaraListaComponent,
+    AlvaraListaFilterComponent
   ]
 })
 export class AlvaraModule { }
