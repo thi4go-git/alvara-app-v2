@@ -42,74 +42,76 @@
         <!-- Position Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> id. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.id}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="tipo_doc">
             <th mat-header-cell *matHeaderCellDef> Tipo </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipo_doc}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.tipo_doc}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="nome_arquivo">
             <th mat-header-cell *matHeaderCellDef> Nome Arq </th>
-            <td mat-cell *matCellDef="let element"> {{element.nome_arquivo}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.nome_arquivo}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="numero_alvara">
             <th mat-header-cell *matHeaderCellDef> Nº Alvará</th>
-            <td mat-cell *matCellDef="let element"> {{element.numero_alvara}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.numero_alvara}} </td>
         </ng-container>
 
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="nome_empresa">
             <th mat-header-cell *matHeaderCellDef> Empresa </th>
-            <td mat-cell *matCellDef="let element"> {{element.nome_empresa}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.nome_empresa}} </td>
         </ng-container>
 
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="cnpj_empresa">
             <th mat-header-cell *matHeaderCellDef> CNPJ </th>
-            <td mat-cell *matCellDef="let element"> {{element.cnpj_empresa}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.cnpj_empresa}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="data_emissao">
             <th mat-header-cell *matHeaderCellDef> Emissão </th>
-            <td mat-cell *matCellDef="let element"> {{ element.data_emissao | date:'dd/MM/yyyy' }}</td>
+            <td mat-cell *matCellDef="let alvara"> {{ alvara.data_emissao | date:'dd/MM/yyyy' }}</td>
         </ng-container>
 
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="data_vencimento">
             <th mat-header-cell *matHeaderCellDef> Vencimento </th>
-            <td mat-cell *matCellDef="let element"> {{ element.data_vencimento | date:'dd/MM/yyyy' }} </td>
+            <td mat-cell *matCellDef="let alvara"> {{ alvara.data_vencimento | date:'dd/MM/yyyy' }} </td>
         </ng-container>
 
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="expira">
             <th mat-header-cell *matHeaderCellDef> Expira </th>
-            <td mat-cell *matCellDef="let element"> {{element.expira}} </td>
+            <td mat-cell *matCellDef="let alvara"> {{alvara.expira}} </td>
         </ng-container>
 
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="pdf">
             <th mat-header-cell *matHeaderCellDef> pdf </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon class="cursorMao">get_app</mat-icon>
+            <td mat-cell *matCellDef="let alvara">
+                <mat-icon class="cursorMao" (click)="baixar(alvara)">get_app</mat-icon>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef> edit </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon class="cursorMao">edit</mat-icon>
+            <td mat-cell *matCellDef="let alvara">
+                <a routerLink="/alvara/form/{{ alvara.id }}">
+                    <mat-icon>edit</mat-icon>
+                </a>
             </td>
         </ng-container>
 

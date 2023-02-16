@@ -5,6 +5,7 @@ import { Alvara } from '../alvara';
 import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -42,7 +43,10 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private service: AlvaraService) { }
+  constructor(
+    private service: AlvaraService,
+    private snackBar: MatSnackBar
+  ) { }
 
 
   applyFilter(event: Event) {
@@ -96,6 +100,52 @@ export class AlvaraListaFilterComponent implements OnInit, AfterViewInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+
+  baixar(alvara: Alvara) {
+    this.mostraProgresso = true;
+
+    this.service.obterArquivoPorId(alvara.id)
+      .subscribe({
+        next: (resposta) => {
+          var sampleArr = this.base64ToArrayBuffer(resposta.pdf);
+          this.saveByteArray("ARQUIVO.pdf", sampleArr);
+          if (this.listaAlvaras.length == 0) {
+            this.snackBar.open("Arquivo BAIXADO!", "Info!", {
+              duration: 2000
+            });
+          }
+          this.mostraProgresso = false;
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open("Erro ao BAIXAR Arquivo!", "ERRO!", {
+            duration: 2000
+          });
+        }
+      });
+
+  }
+
+  base64ToArrayBuffer(base64: any) {
+    var binaryString = window.atob(base64);
+    var binaryLen = binaryString.length;
+    var bytes = new Uint8Array(binaryLen);
+    for (var i = 0; i < binaryLen; i++) {
+      var ascii = binaryString.charCodeAt(i);
+      bytes[i] = ascii;
+    }
+    return bytes;
+  }
+
+  saveByteArray(reportName: any, byte: any) {
+    var blob = new Blob([byte], { type: "application/pdf" });
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    var fileName = reportName;
+    link.download = fileName;
+    link.click();
   }
 
 
