@@ -3,16 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { environment } from 'src/environments/environment';
 
-
-// const API_TOKEN = 'http://cloudtecnologia.dynns.com:8081/oauth/token';
-const API_TOKEN = 'http://192.168.1.254:8081/oauth/token';
-const CLI_ID = 'my-angular-app';
-const CLI_SECRET = '@321';
 
 
 @Injectable({ providedIn: 'root' })
 export class AutenticacaoService {
+
+
+  urlToken: string = environment.apiUrl + '/oauth/token';
 
   jwtHelper: JwtHelperService;
 
@@ -28,11 +27,13 @@ export class AutenticacaoService {
       .set('grant_type', 'password');
 
     const headers = {
-      'Authorization': 'Basic ' + btoa(CLI_ID + ':' + CLI_SECRET),
+      'Authorization': 'Basic ' + btoa(environment.cli_id + ':' + environment.cli_secret),
       'Content-Type': 'application/x-www-form-urlencoded'
     };
+    console.log(this.urlToken);
 
-    return this.http.post(API_TOKEN, params.toString(), { headers });
+
+    return this.http.post(this.urlToken, params.toString(), { headers });
   }
 
   isAuthenticated(): boolean {

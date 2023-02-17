@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +13,7 @@ export class MenuComponent implements OnInit {
   usuarioLogado: string = "Deslogado";
   authorities: string[] = [];
   administrador: boolean = false;
+  versao: string = '';
 
   constructor(
     private authService: AutenticacaoService,
@@ -22,6 +24,7 @@ export class MenuComponent implements OnInit {
     this.usuarioLogado = this.authService.getUsuarioAutenticado();
     this.authorities = this.authService.getAuthoritiesToken();
     this.administrador = this.authService.isAdmin(this.authorities);
+    this.versao = environment.versao;
   }
 
   logout() {
