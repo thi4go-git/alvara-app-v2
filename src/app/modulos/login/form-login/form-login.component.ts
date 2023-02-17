@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-form-login',
+  templateUrl: './form-login.component.html',
+  styleUrls: ['./form-login.component.css']
 })
-export class LoginComponent {
+export class FormLoginComponent {
 
   username: string;
   password: string;
