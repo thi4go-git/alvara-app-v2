@@ -10,6 +10,8 @@ import { AlvaraPaginator } from '../modulos/alvara/alvaraPaginator';
 
 const API_URL = 'http://192.168.1.254:8081/api/alvara';
 
+
+
 @Injectable({ providedIn: 'root' })
 export class AlvaraService {
 
