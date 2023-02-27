@@ -57,7 +57,7 @@
                     <td>{{ alvara.nome_arquivo }}</td>
                     <td>{{ alvara.numero_alvara }}</td>
                     <td>{{ alvara.nome_empresa }}</td>
-                    <td>{{ alvara.cnpj_empresa }}</td>
+                    <td>{{ alvara.cnpj_empresa | cnpjFormat }}</td>
                     <td>{{ alvara.data_emissao | date:'dd/MM/yyyy' }}</td>
                     <td>{{ alvara.data_vencimento | date:'dd/MM/yyyy' }}</td>
                     <td>{{ alvara.expira}}</td>

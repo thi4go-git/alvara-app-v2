@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true --ssl-cert C:/Users/thiago.melo/Desktop/certificado/cert_crt1.crt --ssl-key C:/Users/thiago.melo/Desktop/certificado/key1.key",
+    "start": "ng serve --ssl true --ssl-cert C:/Users/thiago.melo/Desktop/certificado/cert_crt1.crt --ssl-key C:/Users/thiago.melo/Desktop/certificado/key1.key --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

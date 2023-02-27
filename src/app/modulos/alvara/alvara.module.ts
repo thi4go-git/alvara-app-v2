@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AlvaraListaFilterComponent } from './alvara-lista-filter/alvara-lista-filter.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CnpjFormatPipe } from 'src/app/pipes/cnpj-format.pipe';
 
 
 
@@ -23,7 +24,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   declarations: [
     AlvaraFormComponent,
     AlvaraListaComponent,
-    AlvaraListaFilterComponent
+    AlvaraListaFilterComponent,
+    CnpjFormatPipe
   ],
   imports: [
     CommonModule,

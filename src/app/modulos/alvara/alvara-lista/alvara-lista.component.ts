@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Alvara } from '../alvara';
 import { PageEvent } from '@angular/material/paginator';
-
+import { CnpjFormatPipe } from 'src/app/pipes/cnpj-format.pipe';
 
 
 @Component({
   selector: 'app-alvara-lista',
   templateUrl: './alvara-lista.component.html',
-  styleUrls: ['./alvara-lista.component.css']
+  styleUrls: ['./alvara-lista.component.css'],
+  template: '{{ cnpj | cnpjFormat }}'
 })
 export class AlvaraListaComponent implements OnInit {
 
@@ -33,7 +34,7 @@ export class AlvaraListaComponent implements OnInit {
   constructor(
     private service: AlvaraService,
     private snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) { }
 
 

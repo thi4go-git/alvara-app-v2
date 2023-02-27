@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlvaraService } from 'src/app/servicos/alvara.service';
 import { Alvara } from '../alvara';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DateFormatPipe } from 'src/app/pipes/date-format.pipe';
 
 
 
@@ -72,12 +71,22 @@ export class AlvaraFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.alvara);
     this.atualizar();
   }
 
   atualizar() {
 
+    console.log("UPDATE");
+
+    let cnpjReplace = this.alvara.cnpj_empresa;
+
+    cnpjReplace = cnpjReplace.replaceAll(".", "");
+    cnpjReplace = cnpjReplace.replaceAll("/", "");
+    cnpjReplace = cnpjReplace.replaceAll("-", "");
+
+    this.alvara.cnpj_empresa = cnpjReplace;
+
+    console.log(this.alvara);
 
 
     this.service
@@ -93,6 +102,7 @@ export class AlvaraFormComponent implements OnInit {
 
         },
         error: (errorResponse) => {
+          console.log(errorResponse.error.erros);
 
           this.snackBar.open("ERRO Ao Atualizar Informações!", "ERRO!", {
             duration: 2000
