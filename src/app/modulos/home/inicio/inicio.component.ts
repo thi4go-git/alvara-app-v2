@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AlvaraService } from 'src/app/servicos/alvara.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Router } from '@angular/router';
+import Chart from 'chart.js/auto'
 
 @Component({
   selector: 'app-inicio',
@@ -20,16 +21,15 @@ export class InicioComponent {
 
   constructor(
     private service: AlvaraService,
-    private snackBar: MatSnackBar
-  ) { this.definirDashboard() }
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
+    this.definirDashboard();
+  }
 
 
   definirDashboard() {
     this.definirTotalArquivos();
-    this.qtdeVencerApos60Dias();
-    this.definirVencerEm60Dias();
-    this.definirSemInformacoes();
-    this.definirVencidos();
   }
 
   definirTotalArquivos() {
@@ -38,6 +38,7 @@ export class InicioComponent {
       .subscribe({
         next: (response) => {
           this.totalDocumentos = response;
+          this.qtdeVencerApos60Dias();
         },
         error: (errorResponse) => {
           this.snackBar.open("Erro ao Obter totalDocumentos!", "ERRO!", {
@@ -54,6 +55,7 @@ export class InicioComponent {
       .subscribe({
         next: (response) => {
           this.totalVencidos = response;
+          this.carregarCanvas();
         },
         error: (errorResponse) => {
           this.snackBar.open("Erro ao Obter totalVencidos!", "ERRO!", {
@@ -71,6 +73,7 @@ export class InicioComponent {
       .subscribe({
         next: (response) => {
           this.venceEm60dias = response;
+          this.definirSemInformacoes();
         },
         error: (errorResponse) => {
           this.snackBar.open("Erro ao Obter venceEm60dias!", "ERRO!", {
@@ -88,6 +91,7 @@ export class InicioComponent {
       .subscribe({
         next: (response) => {
           this.venceApos60dias = response;
+          this.definirVencerEm60Dias();
         },
         error: (errorResponse) => {
           this.snackBar.open("Erro ao Obter venceApos60dias!", "ERRO!", {
@@ -100,11 +104,11 @@ export class InicioComponent {
   }
 
   definirSemInformacoes() {
-
     this.service.totalArquivosSemInformacoes()
       .subscribe({
         next: (response) => {
           this.totaDocumentosSemInfo = response;
+          this.definirVencidos();
         },
         error: (errorResponse) => {
           this.snackBar.open("Erro ao Obter totaDocumentosSemInfo!", "ERRO!", {
@@ -113,7 +117,51 @@ export class InicioComponent {
           console.log(errorResponse);
         }
       });
+  }
+
+
+  @ViewChild("canvasDash", { static: true }) canvasDash: ElementRef | undefined
+  carregarCanvas() {
+
+    new Chart(this.canvasDash?.nativeElement, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Vencidos',
+          'Sem data/info',
+          'Vencer após 60 dias',
+          'Vencer em até 60 dias'
+        ],
+        datasets: [{
+          data: [this.totalVencidos, this.totaDocumentosSemInfo,
+          this.venceApos60dias, this.venceEm60dias],
+          backgroundColor: [
+            'rgba(255, 0, 0)',
+            'rgba(255, 165, 0)',
+            'rgba(0, 0, 255)',
+            'rgba(255, 203, 219)'
+          ],
+          borderColor: [
+            'rgba(255, 0, 0)',
+            'rgba(255, 165, 0)',
+            'rgba(0, 0, 255)',
+            'rgba(255, 203, 219)'
+          ],
+
+        }]
+      },
+      options: {
+        responsive: true,
+
+
+      }
+    })
+
+
 
   }
+
+
+
 
 }
